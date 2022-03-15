@@ -10,7 +10,7 @@
     </parent>
     <groupId>gift.goblin</groupId>
     <artifactId>ConnectivityChecker</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>ConnectivityChecker</name>
     <description>Checks your internet connection every x minutes</description>
     <properties>

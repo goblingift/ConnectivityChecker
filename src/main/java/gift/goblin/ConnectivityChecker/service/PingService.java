@@ -6,6 +6,8 @@ package gift.goblin.ConnectivityChecker.service;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.net.URL;
 import java.net.URLConnection;
 import org.slf4j.Logger;
@@ -33,10 +35,9 @@ public class PingService {
         
         boolean result = false;
         
-        try {
-            InetAddress inetAddress = InetAddress.getByName(targetUrl);
-            result = inetAddress.isReachable(timeout * 1000);
-            logger.info("result=" + result);
+        try (Socket socket = new Socket()) {
+            socket.connect(new InetSocketAddress(targetUrl, 80), timeout * 1000);
+            result = true;
         } catch (Exception e) {
             logger.warn("Couldnt resolve hostname, looks like internet is down: {}", targetUrl);
         } 

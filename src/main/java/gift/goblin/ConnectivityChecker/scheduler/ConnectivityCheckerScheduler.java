@@ -27,9 +27,8 @@ public class ConnectivityCheckerScheduler {
     @Autowired
     PingService PingService;
     
-    @Scheduled(fixedRate = 30_000)
+    @Scheduled(fixedRate = 60_000)
     public void triggerScheduler() {
-        logger.info("Triggered connectivity scheduler!");
         boolean checkConnection = PingService.checkConnection();
         metricService.triggerMetricsConnectivity(checkConnection);
     }
